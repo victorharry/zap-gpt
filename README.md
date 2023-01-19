@@ -22,7 +22,7 @@ Clone este projeto com o comando:
   git clone https://github.com/victorharry/zap-gpt.git
 ```
 
-Vá até o arquivo .env.example e renomeie-o para .env, e altere adicione os valores necessários para seu funcionamento.
+Vá até o arquivo .env.example e renomeie-o para .env, e altere os valores necessários para seu funcionamento.
 
 Instale agora as dependencias do projeto com o comando:
 
