@@ -1,7 +1,7 @@
 
 # zap-gpt
 
-A integração permitirá que usuários interajam com o ChatGPT através de mensagens de texto no WhatsApp, fornecendo respostas automatizadas baseadas em suas perguntas e comandos. O guia discutirá os passos necessários desde a configuração até a integração. Vamos usar o Node.js com Javascript para criar o projeto e a biblioteca venom-bot para a integração com o Whatsapp.
+A integração permitirá que usuários interajam com o ChatGPT através de mensagens de texto no WhatsApp, fornecendo respostas automatizadas baseadas em suas perguntas e comandos.
 
 Neste artigo voce consegue ver como criar do 0 [Tab News](https://www.linkedin.com/in/victorhcharry/)
 
