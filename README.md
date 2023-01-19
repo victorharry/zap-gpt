@@ -3,18 +3,18 @@
 
 A integração permitirá que usuários interajam com o ChatGPT através de mensagens de texto no WhatsApp, fornecendo respostas automatizadas baseadas em suas perguntas e comandos.
 
-Neste artigo voce consegue ver como criar do 0 [Tab News](https://www.linkedin.com/in/victorhcharry/)
+Neste artigo voce consegue ver como criar do 0 -> [Tab News](https://www.tabnews.com.br/victorharry/guia-completo-de-como-integrar-o-chat-gpt-com-whatsapp)
 
 ## Demo
 
 ![Imagem gerada no Midjourney](https://miro.medium.com/max/720/1*0K0tAo1ujQoFa9NG3ClIdw.webp)
 
-## Technologies
+## Tecnologias
 
 - [OpenIA](https://beta.openai.com/)
 - [venom-bot](https://github.com/orkestral/venom)
 
-## Localy run
+## Rodar o projeto
 
 Clone este projeto com o comando:
 
