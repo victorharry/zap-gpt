@@ -38,7 +38,7 @@ const getDavinciResponse = async (clientText) => {
 
     try {
         const { data } = await axiosInstance.post('v1/chat/completions', body)
-        const botAnswer = data.choices[0]
+        const botAnswer = data.choices[0].message.content
         return `ChatGPT 🤖\n\n ${botAnswer}`
     } catch (e) {
         return `❌ OpenAI Response Error`
