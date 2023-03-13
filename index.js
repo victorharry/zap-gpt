@@ -38,10 +38,10 @@ const getDavinciResponse = async (clientText) => {
 
     try {
         const { data } = await axiosInstance.post('v1/chat/completions', body)
-        const botAnswer = data.choices[0].message.content.replaceAll('\n', '')
+        const botAnswer = data.choices[0]
         return `ChatGPT 🤖\n\n ${botAnswer}`
     } catch (e) {
-        return `❌ OpenAI Response Error: ${e.response.data.error.message}`
+        return `❌ OpenAI Response Error`
     }
 }
 
@@ -56,7 +56,7 @@ const getDalleResponse = async (clientText) => {
         const { data } = await axiosInstance.post('v1/images/generations', body)
         return data.data[0].url
     } catch (e) {
-        return `❌ OpenAI Response Error: ${e.response.data.error.message}`
+        return `❌ OpenAI Response Error`
     }
 }
 
