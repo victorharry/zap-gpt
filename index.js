@@ -25,21 +25,22 @@ const headers = {
 
 const axiosInstance = axios.create({
     baseURL: 'https://api.openai.com/',
-    timeout: 10000,
+    timeout: 120000,
     headers: headers
 });
 
 const getDavinciResponse = async (clientText) => {
     const body = {
-        "model": "gpt-3.5-turbo",
-        "messages": [{ "role": "user", "content": clientText }],
+        "model": "text-davinci-003",
+        "prompt": clientText,
+        "max_tokens": 2048,
         "temperature": 1
     }
 
     try {
-        const { data } = await axiosInstance.post('v1/chat/completions', body)
+        const { data } = await axiosInstance.post('v1/completions', body)
         const botAnswer = data.choices[0].message.content
-        return `ChatGPT 🤖\n\n ${botAnswer}`
+        return `ChatGPT 🤖 ${botAnswer}`
     } catch (e) {
         return `❌ OpenAI Response Error`
     }
@@ -68,6 +69,8 @@ const commands = async (message) => {
 
     let firstWord = message.body.substring(0, message.body.indexOf(" "))
     const sender = message.from.includes(process.env.PHONE_NUMBER) ? message.to : message.from
+    console.log(message)
+    console.log(sender)
     switch (firstWord) {
         case iaCommands.davinci3:
             const question = message.body.substring(message.body.indexOf(" "));
