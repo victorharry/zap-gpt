@@ -1,17 +1,19 @@
-const { Client, MessageMedia } = require('whatsapp-web.js')
+const { Client, MessageMedia, LocalAuth } = require('whatsapp-web.js')
 const qrcode = require('qrcode-terminal')
 const axios = require('axios')
 require('dotenv').config()
 
-const client = new Client({})
+const client = new Client({
+    authStrategy: new LocalAuth() // Vai salvar na pasta .wwebjs_auth, que será automaticamente criada na raiz do projeto.
+})
 
 client.on('qr', qr => {
     qrcode.generate(qr, {small: true})
 });
 
-client.on('ready', () => {
-    console.log('O zap-gpt está pronto 😋 Não esquece da estrelinha no repo ⭐ by: Victor Harry 🧙‍')
-});
+client.on('authenticated', (session) => console.log(`Autenticado`))
+
+client.on('ready', () => console.log('O zap-gpt está pronto 😋 Não esquece da estrelinha no repo ⭐ by: Victor Harry 🧙‍'))
 
 client.on('message_create', message => commands(message))
 
@@ -42,6 +44,7 @@ const getDavinciResponse = async (clientText) => {
         const botAnswer = data.choices[0].message.content
         return `ChatGPT 🤖 ${botAnswer}`
     } catch (e) {
+        console.log(e.message)
         return `❌ OpenAI Response Error`
     }
 }
@@ -73,6 +76,7 @@ const commands = async (message) => {
     console.log(sender)
     switch (firstWord) {
         case iaCommands.davinci3:
+            await client.sendMessage(sender, '⏳ ChatGPT está pensando na sua resposta...')
             const question = message.body.substring(message.body.indexOf(" "));
             getDavinciResponse(question).then(async (response) => {
                 const contact = await message.getContact();
@@ -89,6 +93,7 @@ const commands = async (message) => {
             break
 
         case iaCommands.dalle:
+            await client.sendMessage(sender, '⏳ ChatGPT está pensando na sua resposta...')
             const imgDescription = message.body.substring(message.body.indexOf(" "));
             const contact = await message.getContact();
             getDalleResponse(imgDescription, message).then(async (imgUrl)  => { 
