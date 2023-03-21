@@ -41,7 +41,7 @@ const getDavinciResponse = async (clientText) => {
 
     try {
         const { data } = await axiosInstance.post('v1/completions', body)
-        const botAnswer = data.choices[0].message.content
+        const botAnswer = data.choices[0].text
         return `ChatGPT 🤖 ${botAnswer}`
     } catch (e) {
         console.log(e.message)
@@ -72,11 +72,8 @@ const commands = async (message) => {
 
     let firstWord = message.body.substring(0, message.body.indexOf(" "))
     const sender = message.from.includes(process.env.PHONE_NUMBER) ? message.to : message.from
-    console.log(message)
-    console.log(sender)
     switch (firstWord) {
         case iaCommands.davinci3:
-            await client.sendMessage(sender, '⏳ ChatGPT está pensando na sua resposta...')
             const question = message.body.substring(message.body.indexOf(" "));
             getDavinciResponse(question).then(async (response) => {
                 const contact = await message.getContact();
@@ -93,7 +90,6 @@ const commands = async (message) => {
             break
 
         case iaCommands.dalle:
-            await client.sendMessage(sender, '⏳ ChatGPT está pensando na sua resposta...')
             const imgDescription = message.body.substring(message.body.indexOf(" "));
             const contact = await message.getContact();
             getDalleResponse(imgDescription, message).then(async (imgUrl)  => { 
