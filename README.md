@@ -12,7 +12,7 @@ Neste artigo voce consegue ver como criar do 0 -> [Tab News](https://www.tabnews
 ## Tecnologias
 
 - [OpenIA](https://beta.openai.com/)
-- [venom-bot](https://github.com/orkestral/venom)
+- [whatsapp-web.js](https://wwebjs.dev/)
 
 ## Rodar o projeto
 
