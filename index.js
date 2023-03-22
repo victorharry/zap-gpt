@@ -65,7 +65,7 @@ const getDalleResponse = async (clientText) => {
 
 const commands = async (message) => {
     const iaCommands = {
-        davinci3: "/bot11",
+        davinci3: "/bot",
         dalle: "/img",
     }
     let firstWord = message.body.substring(0, message.body.indexOf(" "))
