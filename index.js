@@ -57,6 +57,9 @@ const getDalleResponse = async (clientText) => {
 
     try {
         const { data } = await axiosInstance.post('v1/images/generations', body)
+         if (!data.data[0].url.includes('https://')) {
+            return `❌ OpenAI Denied Your Request`
+        }
         return data.data[0].url
     } catch (e) {
         return `❌ OpenAI Response Error`
