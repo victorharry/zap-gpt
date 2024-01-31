@@ -33,7 +33,7 @@ const axiosInstance = axios.create({
 
 const getDavinciResponse = async (clientText) => {
     const body = {
-        "model": "text-davinci-003",
+        "model": "gpt-3.5-turbo-instruct",
         "prompt": clientText,
         "max_tokens": 2048,
         "temperature": 1
